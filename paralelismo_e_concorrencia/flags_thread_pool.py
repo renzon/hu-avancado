@@ -19,7 +19,7 @@ def download_and_save(country):
 
 def download_all_flags():
     with ThreadPoolExecutor(max_workers=300) as executor:
-        yield from executor.map(download_and_save, generate_countries(), chunksize=4)
+        yield from executor.map(download_and_save, generate_countries())
 
 
 if __name__ == '__main__':
