@@ -5,7 +5,7 @@ from time import time
 
 import requests
 
-endpoint = 'http://localhost:8001/flags/'
+endpoint = 'http://localhost:8002/flags/'
 
 flags_dir = path.dirname(__file__)
 flags_dir = path.join(flags_dir, 'flags')
