@@ -1,4 +1,8 @@
-from concurrent.futures.process import ProcessPoolExecutor
+""" Rodar o servidor de arquivos estáticos com docker:
+
+docker run -p 8002:8002 -p 8001:8001 -p 8003:8003 -it -d renzon/flupy-flags:run-servers ./run_servers.sh
+
+"""
 from concurrent.futures.thread import ThreadPoolExecutor
 from time import time
 
@@ -18,7 +22,7 @@ def download_and_save(country):
 
 
 def download_all_flags():
-    with ThreadPoolExecutor(max_workers=300) as executor:
+    with ThreadPoolExecutor(max_workers=700) as executor:
         yield from executor.map(download_and_save, generate_countries())
 
 
