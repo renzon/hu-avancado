@@ -16,11 +16,16 @@ class FlagNotFound(Exception):
 
 
 def download_flag(country):
-    url = f'{endpoint}/{country}/{country}.gif'
+    url = flag_url(country)
     resp = requests.get(url)
     if resp.status_code != 200:
         raise FlagNotFound()
     return resp.content
+
+
+def flag_url(country):
+    url = f'{endpoint}/{country}/{country}.gif'
+    return url
 
 
 def save_flag(image, country):
