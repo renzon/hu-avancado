@@ -1,7 +1,7 @@
-# def count(name: str, n: int, lst: list):
+# def count(name: str, n: int, conjunto: list):
 #     for i in range(n):
 #         s = f'{name}: {i}'
-#         lst.append(s)
+#         conjunto.append(s)
 from multiprocessing import Manager, Process, current_process
 from random import randint
 from time import sleep

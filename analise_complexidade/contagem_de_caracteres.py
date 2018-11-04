@@ -4,10 +4,14 @@
 >>> dict(contagem('maça').items())
 {'m': 1, 'a': 2, 'ç': 1}
 """
+from bisect import bisect_right
+from collections import Counter
 
 
 def contagem(caracteres: str):
-    resultado = {}
-    for c in caracteres:
-        resultado[c] = caracteres.count(c)
-    return resultado
+    return Counter(caracteres)
+
+
+if __name__ == '__main__':
+    lst = [1, 1] + list(range(2, 100))
+    print(bisect_right(lst, 1))
