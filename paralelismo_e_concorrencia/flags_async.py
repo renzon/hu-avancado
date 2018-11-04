@@ -16,15 +16,23 @@ async def download(country):
         return save_flag(flag_bytes, country)
 
 
-async def download_all_flags():
+def download_all_flags():
     futures = [download(country) for country in generate_countries()]
-    r = await asyncio.wait(futures)
-    print(r)
-    return 'Final'
+    loop = asyncio.get_event_loop()
+    tasks = asyncio.gather(*futures, loop=loop, return_exceptions=True)
+    results = loop.run_until_complete(tasks)
+    for r in results:
+        if isinstance(r, Exception):
+            print(r)
+        else:
+            yield r
 
 
 if __name__ == '__main__':
     elapsed = time()
-    future = download_all_flags()
-    asyncio.run(future)
+    for flag in download_all_flags():
+        print(flag)
+
     print(f'Total time: {time()-elapsed}s')
+
+# https://docs.python.org/3/library/asyncio-eventloop.html#id15
