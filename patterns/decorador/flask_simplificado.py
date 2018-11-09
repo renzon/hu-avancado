@@ -1,18 +1,19 @@
 """
->>> executar('/')
+>>> app=FlaskSimplificado()
+>>> app.executar('/')
 404
->>> @rota('/')
+>>> @app.rota('/')
 ... def raiz():
 ...     return 'Raiz'
 ...
->>> executar('/')
+>>> app.executar('/')
 'Raiz'
->>> @rota('/nome')
+>>> @app.rota('/nome')
 ... def ola(nome):
 ...     return f'Olá {nome}'
 ...
->>> executar('/nome', 'Renzo')
+>>> app.executar('/nome', 'Renzo')
 'Olá Renzo'
->>> executar('/nome', nome='Tre')
+>>> app.executar('/nome', nome='Tre')
 'Olá Tre'
 """
