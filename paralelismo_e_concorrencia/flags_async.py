@@ -23,7 +23,7 @@ def download_all_flags():
     results = loop.run_until_complete(tasks)
     for r in results:
         if isinstance(r, Exception):
-            print(r)
+            print('Tratamento de Exceção', r)
         else:
             yield r
 
